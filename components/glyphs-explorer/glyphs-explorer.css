@@ -28,6 +28,7 @@ glyphs-explorer .head {
 
 glyphs-explorer .head h1 {
     width: calc(2 * var(--glyphs-explorer-box, 180px));
+    font-weight: normal;
     margin: 0;
     padding: calc(2 * var(--glyphs-explorer-gutter, 1em)) calc(2 * var(--glyphs-explorer-gutter, 1em));
     font-size: 1.5em;
