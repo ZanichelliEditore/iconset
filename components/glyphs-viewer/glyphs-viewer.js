@@ -92,7 +92,12 @@ export class GlyphsViewer extends Component {
             return;
         }
         this.glyphs = this.font.getGlyphs(this.variation)
-            .filter((glyph) => glyph.path.toSVG() !== '<path d=""/>');
+            .filter((glyph) => glyph.path.toSVG() !== '<path d=""/>')
+            .sort((glyph1, glyph2) => {
+                if (glyph1.name < glyph2.name) return -1;
+                if (glyph1.name > glyph2.name) return 1;
+                return 0;
+            });
     }
 
     /**
@@ -134,7 +139,7 @@ export class GlyphsViewer extends Component {
     render() {
         const glyphs = this.glyphs && this.glyphs
             .filter((glyph) => glyph.unicode != null)
-            .filter((glyph) => !this.query || glyph.name.includes(this.query)) || [];
+            .filter((glyph) => !this.query || glyph.name.toLowerCase().includes(this.query.toLowerCase())) || [];
 
         return html`
             ${this.filterable && html`<div class="filters">
