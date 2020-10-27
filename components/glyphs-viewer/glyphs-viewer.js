@@ -1,5 +1,5 @@
-import { Component, html, customElements } from 'http://unpkg.com/@chialab/dna?module';
-import { Font } from 'http://unpkg.com/@chialab/forge?module';
+import { Component, html, customElements } from 'https://unpkg.com/@chialab/dna?module';
+import { Font } from 'https://unpkg.com/@chialab/forge?module';
 import '../glyph-viewer/glyph-viewer.js';
 
 /**
