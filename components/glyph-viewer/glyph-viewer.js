@@ -1,5 +1,5 @@
-import { Component, html, customElements } from 'http://unpkg.com/@chialab/dna?module';
-import { Glyph } from 'http://unpkg.com/@chialab/forge?module';
+import { Component, html, customElements } from 'https://unpkg.com/@chialab/dna?module';
+import { Glyph } from 'https://unpkg.com/@chialab/forge?module';
 
 /**
  * Render a gluph as SVG.
