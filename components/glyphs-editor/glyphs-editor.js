@@ -96,6 +96,28 @@ export class GlyphsEditor extends Component {
     viewer = new GlyphsViewer();
 
     /**
+     * Load JSZIP module and resolve the constructor.
+     * @private
+     * @return {Promise<Function>}
+     */
+    loadJSZIP() {
+        if (!this._loadJSZIPPromise) {
+            this._loadJSZIPPromise = Promise.resolve()
+                .then(async () => {
+                    const exports = window.exports = {};
+                    const module = window.module = { exports };
+                    await import('https://cdnjs.cloudflare.com/ajax/libs/jszip/3.5.0/jszip.min.js');
+                    const JSZIP = module.exports;
+                    delete window.exports;
+                    delete window.module;
+                    return JSZIP;
+                });
+        }
+        
+        return this._loadJSZIPPromise;
+    }
+
+    /**
      * Update the interface for the loaded font.
      * @private
      * @return {void}
@@ -144,12 +166,7 @@ export class GlyphsEditor extends Component {
      * @return {Promise<void>}
      */
     async archive(files) {
-        const exports = window.exports = {};
-        const module = window.module = { exports };
-        await import('https://cdnjs.cloudflare.com/ajax/libs/jszip/3.5.0/jszip.min.js');
-        const JSZIP = module.exports;
-        delete window.exports;
-        delete window.module;
+        const JSZIP = await this.loadJSZIP();
 
         let zip = new JSZIP();
         files.forEach(({ name, content }) => {
