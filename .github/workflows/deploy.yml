@@ -9,7 +9,6 @@ jobs:
   deploy:
     runs-on: ubuntu-18.04
     steps:
-      - uses: actions/setup-node@v1
       - uses: actions/checkout@v2
       - name: Create public
         run: |
