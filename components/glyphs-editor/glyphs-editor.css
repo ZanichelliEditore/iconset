@@ -1,0 +1,177 @@
+@import url('../glyphs-viewer/glyphs-viewer.css');
+
+glyphs-editor {
+    display: flex;
+    flex: 1 auto;
+}
+
+glyphs-editor .tools {
+    display: var(--glyphs-editor-tools-visibility, block);
+    flex: none;
+    width: calc(2 * var(--glyphs-editor-box, 180px));
+    padding: calc(2 * var(--glyphs-editor-gutter, 1em));
+    color: var(--glyphs-editor-tools-color, #fff);
+    background: var(--glyphs-editor-tools-background, #000);
+}
+
+glyphs-editor .tools > * + * {
+    margin-top: calc(4 * var(--glyphs-editor-gutter, 1em));
+}
+
+glyphs-editor .tools label {
+    font-weight: 500;
+}
+
+glyphs-editor .tools .legend {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75em;
+}
+
+glyphs-editor .tools .tool {
+    display: flex;
+    flex-direction: column;
+}
+
+glyphs-editor .tools input[type='range'] {
+    width: 100%;
+    margin: calc(2 * var(--glyphs-editor-gutter, 1em)) 0;
+    color: inherit;
+    outline: none;
+    appearance: none;
+}
+
+glyphs-editor .tools input[type='range']::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 1px;
+    background: currentColor;
+    border: 0 solid transparent;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+glyphs-editor .tools input[type='range']:focus::-webkit-slider-runnable-track {
+    background: currentColor;
+}
+
+glyphs-editor .tools input[type='range']::-webkit-slider-thumb {
+    width: calc(2 * var(--glyphs-editor-gutter, 1em));
+    height: calc(2 * var(--glyphs-editor-gutter, 1em));
+    margin-top: calc(-1 * var(--glyphs-editor-gutter, 1em));
+    background: var(--glyphs-editor-accent-color, #000);
+    border: 2px solid currentColor;
+    border-radius: var(--glyphs-editor-gutter, 1em);
+    box-shadow: none;
+    appearance: none;
+}
+
+glyphs-editor .tools input[type='range']::-moz-range-track {
+    width: 100%;
+    height: 1px;
+    background: currentColor;
+    border: 0 solid transparent;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+glyphs-editor .tools input[type='range']::-moz-range-thumb {
+    width: calc(2 * var(--glyphs-editor-gutter, 1em));
+    height: calc(2 * var(--glyphs-editor-gutter, 1em));
+    background: var(--glyphs-editor-accent-color, #000);
+    border: 2px solid currentColor;
+    border-radius: var(--glyphs-editor-gutter, 1em);
+    box-shadow: none;
+}
+
+glyphs-editor .tools input[type='range']::-ms-track {
+    width: 100%;
+    height: 1px;
+    color: transparent;
+    background: transparent;
+    border-color: transparent;
+    cursor: pointer;
+}
+
+glyphs-editor .tools input[type='range']::-ms-fill-lower {
+    background: currentColor;
+    border: 0 solid transparent;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+glyphs-editor .tools input[type='range']::-ms-fill-upper {
+    background: currentColor;
+    border: 0 solid transparent;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+glyphs-editor .tools input[type='range']::-ms-thumb {
+    width: calc(2 * var(--glyphs-editor-gutter, 1em));
+    height: calc(2 * var(--glyphs-editor-gutter, 1em));
+    background: var(--glyphs-editor-accent-color, #000);
+    border: 2px solid currentColor;
+    border-radius: var(--glyphs-editor-gutter, 1em);
+    box-shadow: none;
+}
+
+glyphs-editor .tools input[type='range']:focus::-ms-fill-lower {
+    background: currentColor;
+}
+
+glyphs-editor .tools input[type='range']:focus::-ms-fill-upper {
+    background: currentColor;
+}
+
+glyphs-editor .tools .actions {
+    display: flex;
+    flex-direction: column;
+}
+
+glyphs-editor .tools .actions button {
+    margin: 0;
+    padding: var(--glyphs-editor-gutter, 1em);
+    overflow: hidden;
+    color: var(--glyphs-editor-text-color, #000);
+    font-family: inherit;
+    font-size: inherit;
+    background: var(--glyphs-editor-surface-color, #fff);
+    border: 0;
+    border-radius: 2em;
+    outline: 0;
+    appearance: none;
+}
+
+glyphs-editor .tools .actions button:not([disabled]) {
+    cursor: pointer;
+}
+
+glyphs-editor .tools .actions button:not([disabled]):hover,
+glyphs-editor .tools .actions button:not([disabled]):focus {
+    background: #f5f5f5;
+}
+
+glyphs-editor .tools .actions button:not([disabled]):active {
+    background: #e5e5e5;
+}
+
+glyphs-editor .tools .actions button[disabled] {
+    color: #676b6f;
+    background: #e6e6e6;
+}
+
+glyphs-editor .tools .actions button + button {
+    margin-top: var(--glyphs-editor-gutter, 1em);
+}
+
+glyphs-editor glyphs-viewer {
+    --glyphs-viewer-gutter: var(--glyphs-editor-gutter:);
+    --glyphs-viewer-box: var(--glyphs-editor-box, 180px);
+    --glyphs-viewer-focus-color: var(--glyphs-editor-focus-color, #000);
+    --glyphs-viewer-icon-copy: var(--glyphs-editor-icon-copy, '');
+    --glyphs-viewer-icon-download: var(--glyphs-editor-icon-download, '');
+
+    flex: 1 auto;
+    color: var(--glyphs-editor-text-color);
+    background: var(--glyphs-editor-surface-color);
+}

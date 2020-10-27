@@ -1,0 +1,88 @@
+glyph-viewer {
+    display: flex;
+}
+
+glyph-viewer .glyph-viwer-icon-copy i::before {
+    content: var(--glyph-viwer-icon-copy, '');
+}
+
+glyph-viewer .icon-download i::before {
+    content: var(--glyph-viwer-icon-download, '');
+}
+
+glyph-viewer .preview-entry__name {
+    position: absolute;
+    top: var(--glyph-viwer-gutter, 1em);
+    left: var(--glyph-viwer-gutter, 1em);
+    color: inherit;
+    font-size: 0.75em;
+    font-weight: 500;
+}
+
+glyph-viewer .preview-entry__actions {
+    position: absolute;
+    right: 1px;
+    bottom: 1px;
+    left: 1px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    color: var(--glyph-viwer-actions-color, #000);
+    font-size: 0.75em;
+    background: var(--glyph-viwer-actions-background, #fff);
+    border-top: solid 1px currentColor;
+}
+
+glyph-viewer .preview-entry__actions button,
+glyph-viewer .preview-entry__actions a {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: calc(var(--glyph-viwer-gutter, 1em) / 1.5);
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: 1;
+    text-align: left;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    outline: none;
+    cursor: pointer;
+}
+
+glyph-viewer .preview-entry__actions button i,
+glyph-viewer .preview-entry__actions a i {
+    display: block;
+    margin-left: auto;
+}
+
+glyph-viewer .preview-entry__actions button:hover,
+glyph-viewer .preview-entry__actions button:focus,
+glyph-viewer .preview-entry__actions a:hover,
+glyph-viewer .preview-entry__actions a:focus {
+    background: var(--glyph-viwer-action-hover-background, #f5f5f5);
+}
+
+glyph-viewer .preview-entry__actions button:active,
+glyph-viewer .preview-entry__actions a:active {
+    background: var(--glyph-viwer-action-active-background, #e5e5e5);
+}
+
+glyph-viewer .preview-entry__frame {
+    display: flex;
+    flex: 1 auto;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    width: 100%;
+    user-select: text;
+}
+
+glyph-viewer .preview-entry__frame svg {
+    width: 5em;
+    height: 5em;
+    overflow: visible;
+    fill: var(--glyph-viwer-color, #000);
+}
