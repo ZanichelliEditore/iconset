@@ -1,0 +1,238 @@
+@import url('../glyphs-editor/glyphs-editor.css');
+
+glyphs-explorer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    overflow: hidden;
+    color: var(--glyphs-explorer-main-text-color, #fff);
+    background: var(--glyphs-explorer-main-color, #111);
+    user-select: none;
+}
+
+glyphs-explorer[embed] {
+    border: solid 1px var(--glyphs-explorer-main-color, #000);
+    border-top: 0;
+}
+
+glyphs-explorer a {
+    color: inherit;
+    text-decoration: none;
+}
+
+glyphs-explorer .head {
+    display: flex;
+    flex: none;
+    border-bottom: solid 1px currentColor;
+}
+
+glyphs-explorer .head h1 {
+    width: calc(2 * var(--glyphs-explorer-box, 180px));
+    margin: 0;
+    padding: calc(2 * var(--glyphs-explorer-gutter, 1em)) calc(2 * var(--glyphs-explorer-gutter, 1em));
+    font-size: 1.5em;
+    line-height: 0.9;
+}
+
+glyphs-explorer .head .menu {
+    padding: calc(var(--glyphs-explorer-gutter, 1em) * 2);
+    font-size: 1.6em;
+    line-height: 0.75;
+}
+
+glyphs-explorer .head button,
+glyphs-explorer .head a {
+    margin: 0;
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: 1;
+    background: transparent;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+}
+
+glyphs-explorer .head button:hover,
+glyphs-explorer .head button:focus,
+glyphs-explorer .head a:hover,
+glyphs-explorer .head a:focus {
+    background: var(--glyphs-explorer-main-color-hover, #111);
+}
+
+glyphs-explorer .head button:active,
+glyphs-explorer .head a:active {
+    background: var(--glyphs-explorer-main-color-pressed, #222);
+}
+
+glyphs-explorer .head nav {
+    display: flex;
+    align-items: baseline;
+    color: var(--glyphs-explorer-main-text-color, #fff);
+    background: var(--glyphs-explorer-main-color, #111);
+}
+
+glyphs-explorer .head nav > * {
+    display: flex;
+    align-items: baseline;
+    width: var(--glyphs-explorer-box, 180px);
+    margin: 0;
+    padding: calc(var(--glyphs-explorer-gutter, 1em) * 2) var(--glyphs-explorer-gutter, 1em);
+    color: inherit;
+    font-size: inherit;
+    line-height: 1;
+    background: transparent;
+    border: 0;
+    border-top: solid 4px transparent;
+    border-left: solid 1px currentColor;
+    cursor: pointer;
+    appearance: none;
+}
+
+glyphs-explorer .head nav:first-child > *:first-child {
+    border-left: 0;
+}
+
+glyphs-explorer .head nav > *:not(:last-child) {
+    flex: none;
+}
+
+glyphs-explorer .head nav .font-family[data-selected] {
+    border-top: solid 4px var(--glyphs-explorer-accent-color, #ccc);
+}
+
+glyphs-explorer .head nav i {
+    margin-left: var(--glyphs-explorer-gutter, 1em);
+}
+
+glyphs-explorer[menu] .head .icon-menu::before {
+    content: '×';
+}
+
+glyphs-explorer main {
+    display: flex;
+    flex: 1 auto;
+    overflow: hidden;
+}
+
+glyphs-explorer .tools {
+    flex: none;
+    width: calc(2 * var(--glyphs-explorer-box, 180px));
+    padding: calc(2 * var(--glyphs-explorer-gutter, 1em));
+}
+
+glyphs-explorer .tools > * + * {
+    margin-top: calc(4 * var(--glyphs-explorer-gutter, 1em));
+}
+
+glyphs-explorer .tools label {
+    font-weight: 500;
+}
+
+glyphs-explorer .tools .legend {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75em;
+}
+
+glyphs-explorer .tools .tool {
+    display: flex;
+    flex-direction: column;
+}
+
+glyphs-explorer .tools .actions {
+    display: flex;
+    flex-direction: column;
+}
+
+glyphs-explorer glyphs-editor {
+    --glyphs-editor-gutter: var(--glyphs-explorer-gutter, 1em);
+    --glyphs-editor-box: var(--glyphs-explorer-box, 180px);
+    --glyphs-editor-tools-background: var(--glyphs-explorer-main-color, #000);
+    --glyphs-editor-text-color: var(--glyphs-explorer-main-color, #000);
+    --glyphs-editor-surface-color: var(--glyphs-explorer-preview-surface-color, #fff);
+    --glyphs-editor-accent-color: var(--glyphs-explorer-accent-color, #ccc);
+    --glyphs-editor-focus-color: var(--glyphs-explorer-accent-color, #ccc);
+    --glyphs-editor-icon-copy: '\E032';
+    --glyphs-editor-icon-download: '\E070';
+    --glyphs-editor-tools-color: var(--glyphs-explorer-main-text-color, #fff);
+
+    flex: 1 auto;
+    overflow: hidden;
+    color: var(--glyphs-explorer-preview-text-color, #000);
+    background: var(--glyphs-explorer-preview-surface-color, #fff);
+}
+
+glyphs-explorer[embed] glyphs-editor {
+    --glyphs-editor-tools-visibility: none;
+}
+
+@media screen and (max-width: 1140px) {
+    glyphs-explorer:not([embed]) .head {
+        flex-wrap: wrap;
+    }
+
+    glyphs-explorer:not([embed]) .head .menu {
+        margin-left: auto;
+    }
+
+    glyphs-explorer:not([embed]) .head nav {
+        position: fixed;
+        top: 4em;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 2;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        width: 100%;
+        margin: auto;
+    }
+
+    glyphs-explorer:not([embed]) .head nav a,
+    glyphs-explorer:not([embed]) .head nav button {
+        flex: none;
+        width: 100%;
+        padding: calc(var(--glyphs-explorer-gutter, 1em) * 2);
+        border-top: 0;
+        border-right: 0;
+        border-bottom: solid 1px currentColor;
+        border-left: 0;
+    }
+
+    glyphs-explorer:not([embed]) .head nav a span,
+    glyphs-explorer:not([embed]) .head nav button span {
+        animation: slideIn 200ms ease-out;
+    }
+
+    glyphs-explorer:not([embed]) .head nav .font-family[data-selected] {
+        border-top: 0;
+    }
+
+    glyphs-explorer:not([embed]):not([menu]) .head nav {
+        display: none;
+    }
+
+    glyphs-explorer:not([embed]) glyphs-editor {
+        --glyphs-editor-tools-visibility: none;
+    }
+}
+
+@media screen and (min-width: 1141px) {
+    glyphs-explorer .head .menu {
+        display: none;
+    }
+}
+
+@keyframes slideIn {
+    0% {
+        transform: translate3d(20px, 0, 0);
+        opacity: 0;
+    }
+
+    100% {
+        transform: none;
+        opacity: 1;
+    }
+}

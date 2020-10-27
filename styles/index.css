@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap');
+@import url('../components/glyphs-explorer/glyphs-explorer.css');
+@import url('./icons.css');
+
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+body > * {
+    flex: 1 auto;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+glyphs-explorer {
+    --glyphs-explorer-main-color: #333333;
+    --glyphs-explorer-main-color-hover: #444444;
+    --glyphs-explorer-main-color-pressed: #555555;
+    --glyphs-explorer-main-text-color: #fff;
+    --glyphs-explorer-accent-color: #0056c1;
+    --glyphs-explorer-preview-text-color: #111;
+    --glyphs-explorer-preview-surface-color: #fff;
+    --glyphs-explorer-box: 190px;
+    --glyphs-explorer-gutter: 10px;
+    font-family: 'IBM Plex Sans', sans-serif;
+}

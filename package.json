@@ -1,0 +1,23 @@
+{
+  "name": "@zanichelli/iconset-viewer",
+  "version": "1.0.0",
+  "description": "An iconset explorer designed for the Zanichelli's Design System.",
+  "private": true,
+  "scripts": {
+    "start": "es-dev-server --app-index index.html --node-resolve --watch --open",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZanichelliEditore/iconset-viewer.git"
+  },
+  "author": "Zanichelli",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/ZanichelliEditore/iconset-viewer/issues"
+  },
+  "homepage": "https://github.com/ZanichelliEditore/iconset-viewer#readme",
+  "devDependencies": {
+    "es-dev-server": "^1.57.8"
+  }
+}

@@ -1,0 +1,58 @@
+@font-face {
+    font-family: 'zanichelli-iconset';
+    font-weight: normal;
+    font-style: normal;
+    src: url('../fonts/zanichelli-iconset-stroke.ttf') format('truetype');
+}
+
+[class*='icon-'] {
+    display: inline-block;
+    flex: none;
+    font-size: 1em;
+    line-height: 1;
+    vertical-align: baseline;
+}
+
+[class*='icon-']::before {
+    content: '';
+    display: block;
+    font-family: 'zanichelli-iconset', monospace;
+    font-weight: normal;
+    font-style: normal;
+    font-variant: normal;
+    letter-spacing: 0;
+    text-transform: none;
+    -webkit-font-feature-settings: 'liga';
+    -moz-font-feature-settings: 'liga=1';
+    -moz-font-feature-settings: 'liga';
+    -ms-font-feature-settings: 'liga' 1;
+    font-feature-settings: 'liga';
+    -webkit-font-variant-ligatures: discretionary-ligatures;
+    font-variant-ligatures: discretionary-ligatures;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-search::before {
+    content: '\01F50D';
+}
+
+.icon-external::before {
+    content: '\E073';
+}
+
+.icon-copy::before {
+    content: '\E032';
+}
+
+.icon-download::before {
+    content: '\E070';
+}
+
+.icon-menu::before {
+    content: '\E081';
+}
+
+.icon-close::before {
+    content: '×';
+}

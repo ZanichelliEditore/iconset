@@ -1,0 +1,117 @@
+@import url('../glyph-viewer/glyph-viewer.css');
+
+glyphs-viewer {
+    display: flex;
+    flex-direction: column;
+}
+
+glyphs-viewer .filters {
+    display: flex;
+    flex: none;
+    border-bottom: solid 1px currentColor;
+}
+
+glyphs-viewer .filters > * {
+    margin: 0;
+}
+
+glyphs-viewer .filters > *:last-child {
+    flex: 1 auto;
+}
+
+glyphs-viewer .filters .search-filter {
+    position: relative;
+}
+
+glyphs-viewer .filters .search-filter input {
+    width: 100%;
+    padding: var(--glyphs-viewer-gutter, 1em);
+    font-family: inherit;
+    font-size: inherit;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    outline: 0;
+    appearance: none;
+}
+
+glyphs-viewer .filters .search-filter i {
+    position: absolute;
+    top: 0;
+    right: var(--glyphs-viewer-gutter, 1em);
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    margin: auto;
+    font-size: 1.4em;
+    vertical-align: middle;
+}
+
+glyphs-viewer .filters select {
+    padding: var(--glyphs-viewer-gutter, 1em);
+    font-family: inherit;
+    font-size: inherit;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    appearance: none;
+}
+
+glyphs-viewer .preview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(var(--glyphs-viewer-box, 180px), 1fr));
+    overflow: auto;
+}
+
+glyphs-viewer .preview-entry {
+    position: relative;
+    height: var(--glyphs-viewer-box, 180px);
+    margin: 0;
+    padding: 100% 0 0 0;
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    background: transparent;
+    border: 0;
+    border-top: solid 1px transparent;
+    border-right: solid 1px currentColor;
+    border-bottom: solid 1px currentColor;
+    border-left: solid 1px transparent;
+    outline: 0;
+}
+
+glyphs-viewer .preview-entry:not([disabled]) {
+    cursor: pointer;
+}
+
+glyphs-viewer .preview-entry:hover:not([disabled]),
+glyphs-viewer .preview-entry:focus-visible:focus:not([disabled]) {
+    z-index: 1;
+    border-color: var(--glyphs-viewer-focus-color, #000);
+    box-shadow: inset 0 0 0 1px var(--glyphs-viewer-focus-color, #000), 0 0 0 1px var(--glyphs-viewer-focus-color, #000);
+}
+
+glyphs-viewer .preview-entry[data-selected]:not([disabled]) {
+    background: var(--glyphs-viewer-selected-color, rgba(0, 0, 0, 0.05));
+}
+
+glyphs-viewer .preview-entry .preview-entry__actions {
+    display: none;
+}
+
+glyphs-viewer .preview-entry:hover .preview-entry__actions,
+glyphs-viewer .preview-entry:focus:focus-visible .preview-entry__actions {
+    display: flex;
+}
+
+glyphs-viewer glyph-viewer {
+    --glyph-viewer-gutter: var(--glyphs-viewer-gutter, 1em);
+    --glyph-viewer-icon-copy: var(--glyphs-viewer-icon-copy, '');
+    --glyph-viewer-icon-download: var(--glyphs-viewer-icon-download, '');
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
