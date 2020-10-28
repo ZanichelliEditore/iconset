@@ -84,7 +84,12 @@ glyphs-viewer .preview-entry:not([disabled]) {
     cursor: pointer;
 }
 
-glyphs-viewer .preview-entry:hover:not([disabled]),
+glyphs-viewer .preview-entry:hover:not([disabled]) {
+    z-index: 1;
+    border-color: var(--glyphs-viewer-focus-color, #000);
+    box-shadow: inset 0 0 0 1px var(--glyphs-viewer-focus-color, #000), 0 0 0 1px var(--glyphs-viewer-focus-color, #000);
+}
+
 glyphs-viewer .preview-entry:focus-visible:focus:not([disabled]) {
     z-index: 1;
     border-color: var(--glyphs-viewer-focus-color, #000);
@@ -99,7 +104,10 @@ glyphs-viewer .preview-entry .preview-entry__actions {
     display: none;
 }
 
-glyphs-viewer .preview-entry:hover .preview-entry__actions,
+glyphs-viewer .preview-entry:hover .preview-entry__actions {
+    display: flex;
+}
+
 glyphs-viewer .preview-entry:focus:focus-visible .preview-entry__actions {
     display: flex;
 }
