@@ -37,7 +37,7 @@ glyphs-viewer .filters .search-filter input {
 
 glyphs-viewer .filters .search-filter i {
     position: absolute;
-    top: 0;
+    top: var(--glyphs-viewer-gutter, 1em);
     right: var(--glyphs-viewer-gutter, 1em);
     bottom: 0;
     display: flex;
@@ -97,7 +97,7 @@ glyphs-viewer .preview-entry:focus-visible:focus:not([disabled]) {
 }
 
 glyphs-viewer .preview-entry[data-selected]:not([disabled]) {
-    background: var(--glyphs-viewer-selected-color, rgba(0, 0, 0, 0.05));
+    background: var(--glyphs-viewer-selected-color, #d6eaff);
 }
 
 glyphs-viewer .preview-entry .preview-entry__actions {

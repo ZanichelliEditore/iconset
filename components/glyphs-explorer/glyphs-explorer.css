@@ -68,15 +68,17 @@ glyphs-explorer .head a:active {
 
 glyphs-explorer .head nav {
     display: flex;
-    align-items: baseline;
+    align-items: center;
     color: var(--glyphs-explorer-main-text-color, #fff);
     background: var(--glyphs-explorer-main-color, #111);
 }
 
 glyphs-explorer .head nav > * {
+    position: relative;
     display: flex;
-    align-items: baseline;
+    align-items: center;
     width: var(--glyphs-explorer-box, 180px);
+    height: 100%;
     margin: 0;
     padding: calc(var(--glyphs-explorer-gutter, 1em) * 2) var(--glyphs-explorer-gutter, 1em);
     color: inherit;
@@ -84,7 +86,6 @@ glyphs-explorer .head nav > * {
     line-height: 1;
     background: transparent;
     border: 0;
-    border-top: solid 4px transparent;
     border-left: solid 1px currentColor;
     cursor: pointer;
     appearance: none;
@@ -98,8 +99,14 @@ glyphs-explorer .head nav > *:not(:last-child) {
     flex: none;
 }
 
-glyphs-explorer .head nav .font-family[data-selected] {
-    border-top: solid 4px var(--glyphs-explorer-accent-color, #ccc);
+glyphs-explorer .head nav .font-family[data-selected]::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: var(--glyphs-explorer-accent-color, #ccc);
 }
 
 glyphs-explorer .head nav i {

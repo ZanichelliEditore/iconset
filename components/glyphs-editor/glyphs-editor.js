@@ -1,4 +1,4 @@
-import { Component, html, customElements } from 'https://unpkg.com/@chialab/dna?module';
+import { Component, html, customElements, render } from 'https://unpkg.com/@chialab/dna?module';
 import { Font } from 'https://unpkg.com/@chialab/forge@1.0.3/dist/esm/forge.js';
 import { GlyphsViewer } from '../glyphs-viewer/glyphs-viewer.js';
 
@@ -96,6 +96,11 @@ export class GlyphsEditor extends Component {
     viewer = new GlyphsViewer();
 
     /**
+     * Feedback dialog.
+     */
+    dialog = document.createElement('dialog');
+
+    /**
      * Load JSZIP module and resolve the constructor.
      * @private
      * @return {Promise<Function>}
@@ -113,7 +118,7 @@ export class GlyphsEditor extends Component {
                     return JSZIP;
                 });
         }
-        
+
         return this._loadJSZIPPromise;
     }
 
@@ -250,6 +255,56 @@ export class GlyphsEditor extends Component {
     }
 
     /**
+     * Export JS Object for Design System's components library.
+     */
+    async exportObject() {
+        let subfamily = this.font.names.preferredSubfamily.en;
+        switch (subfamily) {
+            case 'stroke':
+                subfamily = '';
+                break;
+            case 'fill':
+                subfamily = 'filled';
+                break;
+            default:
+                break;
+        }
+
+        const iconsMap = this.font.getGlyphs().reduce((map, glyph) => {
+            if (!glyph.unicode) {
+                return map;
+            }
+
+            const path = glyph.toPath();
+            if (!path) {
+                return map;
+            }
+
+            /** transform the original camelCase name to kebab-case, adding the subfamily */
+            const name = [
+                ...glyph.name
+                    .match(/[0-9]{1,}(?=\b)|[A-Z]{2,}(?=[A-Z][a-z]+|[0-9]|\b|_)|[A-Z]?[a-z]+|[A-Z]|[0-9]+/g)
+                    .map(x => x.toLowerCase()),
+                subfamily // add subfamily (fill, button, ...) to the name
+            ]
+                .filter(Boolean)
+                .join('-');
+            map[name] = glyph.toPath();
+
+            return map;
+        }, {});
+
+        const sortedKeysMap = Object.keys(iconsMap)
+            .sort()
+            .reduce((obj, key) => {obj[key] = iconsMap[key]; return obj}, {});
+        await navigator.clipboard.writeText(JSON.stringify(sortedKeysMap));
+        this.dialog.show();
+        setTimeout(() => {
+            this.dialog.close();
+        }, 2000);
+    }
+
+    /**
      * @inheritdoc
      */
     render() {
@@ -273,9 +328,24 @@ export class GlyphsEditor extends Component {
                     <button onclick=${() => this.downloadFullSVG()}>Download SVG files</button>
                     <button onclick=${() => this.downloadAsTTF()}>Download as .ttf</button>
                     <button onclick=${() => this.downloadAsWebFont()}>Download as Web Font</button>
+                    <button onclick=${() => this.exportObject()} title="Export JSON Object of the ‶${this.font?.names.preferredSubfamily.en}‶ icons for Albe web components">
+                        <i class="icon-copy-to-clipboard"></i>
+                        <span>Export <strong>${this.font?.names.preferredSubfamily.en}</strong> icons JSON</span>
+                    </button>
+
+                    <dialog ref=${this.dialog}>
+                        <div>JSON Object copied to clipboard.</div>
+                    </dialog>
                 </div>
             </div>
-            <${this.viewer} variation=${this.variation} font=${this.font} selectable=${this.selectable} filterable=${this.filterable} guides=${this.guides} class="preview" />
+            <${this.viewer}
+                variation=${this.variation}
+                font=${this.font}
+                selectable=${this.selectable}
+                filterable=${this.filterable}
+                guides=${this.guides}
+                class="preview"
+            />
         `;
     }
 }

@@ -8,6 +8,10 @@ An iconset explorer designed for the Zanichelli's Design System.
 
 Replace the generated `.ttf` files in the `fonts/` folder, then commit and push the changes.
 
+## Export for Albe web components
+
+Select the font "subfamily" (fill, stroke, button) and click the Export button. It will copy the JSON Object to the clipboard.
+
 ## Development
 
 Checkout the repository:
