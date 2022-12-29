@@ -9,8 +9,7 @@
     display: inline-block;
     flex: none;
     font-size: 1em;
-    line-height: 1;
-    vertical-align: baseline;
+    line-height: 0;
 }
 
 [class*='icon-']::before {
@@ -51,6 +50,10 @@
 
 .icon-menu::before {
     content: '\E081';
+}
+
+.icon-copy-to-clipboard::before {
+    content: '\E157';
 }
 
 .icon-close::before {
