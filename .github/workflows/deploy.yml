@@ -21,7 +21,7 @@ jobs:
           cp icon.png public
       - uses: actions/upload-pages-artifact@v1
         with:
-          path: public/*
+          path: public/
   deploy:
     needs: build
     permissions:
