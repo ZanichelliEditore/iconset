@@ -10,8 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Create public
-        run: |
+      - run: |
           mkdir public
           cp -rf components public
           cp -rf config public
@@ -20,10 +19,8 @@ jobs:
           cp index.html public
           cp index.js public
           cp icon.png public
-      - name: Artifacts
-        uses: actions/upload-artifact@v3
+      - uses: actions/upload-pages-artifact@v1
         with:
-          name: github-pages
           path: public/*
   deploy:
     needs: build
