@@ -1,4 +1,4 @@
-import { window, render, html } from 'https://unpkg.com/@chialab/dna?module';
+import { window, render, html } from '@chialab/dna';
 import { GlyphsExplorer } from './components/glyphs-explorer/glyphs-explorer.js';
 import { FAMILIES } from './config/families.js';
 
